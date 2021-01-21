@@ -44,7 +44,7 @@ body {
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-  outline: 2px solid tomato;
+  /*outline: 2px solid tomato;*/
 }
 
 a {
@@ -80,7 +80,9 @@ section {
 }
 
 .hero-button,
-.button-portfolio {
+.button-portfolio,
+.subscription-button,
+.button-close {
   cursor: pointer;
 }
 
@@ -138,7 +140,6 @@ section {
   display: flex;
   
   border-radius: 50%;
-  cursor: pointer;
 }
 
 .icon-close {
@@ -670,6 +671,87 @@ footer {
   width: 20px;
   height: 20px;
   fill: currentColor;
+}
+
+/* ПОДПИСАТЬСЯ В ФУТЕРЕ*/
+.subscription-form {
+  margin-left: 93px;
+}
+
+.subscription-container {
+  display: flex;
+  justify-content: center;
+}
+
+.subscription-lable > p {
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+
+  color: var(--text-hero-color);
+}
+
+.subscription-input {
+  width: 358px;
+  height: 50px;
+  padding-left: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+  outline: none;
+
+  background-color: inherit;
+}
+  
+.subscription-input::placeholder {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+
+  letter-spacing: 0.03em;
+
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscription-button {
+  margin-left: 11px;
+  width: 200px;
+  height: 50px;
+
+  background: var(--activ-button-color);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  outline: none;
+}
+
+.button-send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-send > p {
+  margin-right: 10px;
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.875;
+
+  letter-spacing: 0.06em;
+
+  color: var(--text-hero-color);
+}
+
+.subscription-icon {
+  width: 24px;
+  height: 24px;
 }
 
 /* Portfolio */
