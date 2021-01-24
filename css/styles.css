@@ -286,7 +286,7 @@ section {
   background-color: var(--text-hero-color);
   border-color: var(--title-text-color);
 
-  background-image: url(/images/checkbox.svg);
+  background-image: url(../images/checkbox.svg);
   background-size: contain;
   background-repeat: no-repeat;
   background-origin: border-box;
@@ -303,7 +303,7 @@ section {
 
 .checkbox-input:checked + .modal-checkbox::after {
   background-color: var(--activ-button-color);
-  background-image: url(/images/icon-check.svg);
+  background-image: url(../images/icon-check.svg);
   border-radius: 2px;
   background-size: contain;
   background-repeat: no-repeat;
