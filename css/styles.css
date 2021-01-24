@@ -26,6 +26,7 @@ Font nav, mail, phone, hero, button-hero, h2, h3, p, address, email+phone-footer
   --border-example-color: #eeeeee;
   --secondary-bg-color: #f5f4fa;
   --primary-fill-color: #afb1b8;
+  --checked-button-color: #188CE8;
   --network-bg-color: rgba(255, 255, 255, 0.1);
 
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -98,7 +99,9 @@ section {
   background-color: rgba(0, 0, 0, 0.2);
 
   opacity: 1;
-  transition-property: opacity;
+
+  z-index: 3;
+
   transition: opacity var(--duration) var(--timing-function);
 }
 
@@ -125,7 +128,6 @@ section {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
-  transition-property: transform;
   transition: transform var(--duration) var(--timing-function);
 }
 
@@ -134,23 +136,32 @@ section {
   top: 8px;
   right: 8px;
   left: auto;
-  padding: 0;
-  border: 0;
   width: 30px;
   height: 30px;
+  padding: 0;
 
   display: flex;
-  
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+  background-color: #fff;
+  color: #000000;
+
+  transition: color var(--duration) var(--timing-function);
+}
+
+.button-close:hover,
+.button-close:focus {
+  color: var(--activ-button-color);
 }
 
 .icon-close {
-  width: 30px;
-  height: 30px;
   fill: currentColor;
 }
 
-.modal-section {
+.modal-form {
   margin: 40px;
 }
 
@@ -164,11 +175,12 @@ section {
   color: var(--title-text-color);
 }
 
-.modal-container {
+.modal-lable {
+  display: block;
   margin-bottom: 10px;
 }
 
-.modal-lable > p {
+.label-content {
   height: 14px;
   margin-bottom: 4px;
 
@@ -190,11 +202,18 @@ section {
   border: 1px solid rgba(33, 33, 33, 0.2);
   box-sizing: border-box;
   border-radius: 4px;
-  outline: none;
+  outline: transparent;
 }
 
 .modal-input {
   height: 40px;
+  padding-left: 42px;
+
+  transition: border-color var(--duration) var(--timing-function);
+}
+
+.modal-input:focus {
+  border-color: var(--activ-button-color);
 }
 
 .modal-icon {
@@ -204,7 +223,14 @@ section {
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
-  background-color: lawngreen;
+  background-color: inherit;
+  fill: #000000;
+
+  transition: fill var(--duration) var(--timing-function);
+}
+
+.modal-input:focus + .modal-icon {
+  fill: var(--activ-button-color);
 }
 
 .feedback-input {
@@ -222,6 +248,10 @@ section {
   color: rgba(117, 117, 117, 0.5);
 }
 
+.feedback-input:focus {
+  border: 1px solid var(--activ-button-color);
+}
+
 .modal-lable > .feedback-input {
   margin-bottom: 20px;
 }
@@ -229,14 +259,44 @@ section {
 .checkbox-container {
   position: relative;
   margin-bottom: 30px;
+  padding-left: 36px;
 }
 
-.modal-checkbox > p {
+.chekbox-content {
   height: 24px;
 
   font-weight: 400;
   font-size: 14px;
   line-height: 1.71;
+}
+
+.modal-checkbox::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+
+  width: 16px;
+  height: 15px;
+  background-image: url(/images/Vector3.svg);
+  background-size: contain;
+  background-origin: border-box;
+}
+
+.checkbox-input:focus + .modal-checkbox::after {
+  border: 2px solid var(--activ-button-color);
+  border-radius: 2px;
+  background-image: none;
+}
+
+.checkbox-input:checked + .modal-checkbox::after {
+  background-color: var(--activ-button-color);
+  background-image: url(/images/icon-check.svg);
+  border-radius: 2px;
+  background-size: contain;
+  background-origin: border-box;
 }
 
 .contract-link {
@@ -250,11 +310,11 @@ section {
   height: 50px;
   margin: 0 auto;
 
-  background: var(--activ-button-color);
+  background-color: var(--activ-button-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   border-color: rgba(255, 255, 255, 0);
-  outline: none;
+  outline: transparent;
 
   font-weight: 700;
   font-size: 16px;
@@ -264,6 +324,13 @@ section {
   letter-spacing: 0.06em;
 
   color: var(--text-hero-color);
+
+  transition: background-color var(--duration) var(--timing-function);
+}
+
+.modal-button:focus,
+.modal-button:hover {
+  background-color: var(--checked-button-color);
 }
 
 /* header */
@@ -326,7 +393,6 @@ section {
   letter-spacing: 0.02em;
   color: var(--title-text-color);
 
-  transition-property: color;
   transition: color var(--duration) var(--timing-function);
 }
 
@@ -354,7 +420,6 @@ section {
   letter-spacing: 0.02em;
   color: var(--primary-text-color);
 
-  transition-property: color;
   transition: color var(--duration) var(--timing-function);
 }
 
@@ -628,7 +693,6 @@ section {
   border-radius: 50%;
   color: var(--primary-fill-color);
 
-  transition-property: color, background-color;
   transition: color var(--duration) var(--timing-function), 
     background-color var(--duration) var(--timing-function);
 }
@@ -673,7 +737,6 @@ section {
   border: 1px solid var(--primary-fill-color);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0));
 
-  transition-property: color, border, filter;
   transition: color var(--duration) var(--timing-function),
   border var(--duration) var(--timing-function),
   filter var(--duration) var(--timing-function);
@@ -775,7 +838,6 @@ footer {
   color: var(--text-hero-color);
   background-color: var(--network-bg-color);
 
-  transition-property: background-color;
   transition: background-color var(--duration) var(--timing-function);
 }
 
@@ -791,16 +853,17 @@ footer {
 }
 
 /* ПОДПИСАТЬСЯ В ФУТЕРЕ*/
-.subscription-form {
+.subscribe {
   margin-left: 93px;
 }
 
-.subscription-container {
+.subscription-form {
   display: flex;
   justify-content: center;
+  /*display: block;*/
 }
 
-.subscription-lable > p {
+.subscription-title {
   margin-top: 0;
   margin-bottom: 20px;
 
@@ -821,7 +884,7 @@ footer {
   box-sizing: border-box;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   border-radius: 4px;
-  outline: none;
+  outline: transparent;
 
   background-color: inherit;
 }
@@ -838,6 +901,10 @@ footer {
 }
 
 .subscription-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   margin-left: 11px;
   width: 200px;
   height: 50px;
@@ -845,16 +912,11 @@ footer {
   background: var(--activ-button-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  outline: none;
+  border-color: transparent;
+  outline: transparent;
 }
 
-.button-send {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.button-send > p {
+.button-content {
   margin-right: 10px;
   font-family: Roboto, sans-serif;
   font-weight: 700;
@@ -912,7 +974,6 @@ footer {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0), 0px 1px 2px rgba(0, 0, 0, 0),
     0px 2px 2px rgba(0, 0, 0, 0);
 
-  transition-property: background-color, color, box-shadow;
   transition: background-color var(--duration) var(--timing-function),
   color var(--duration) var(--timing-function),
   box-shadow var(--duration) var(--timing-function);
@@ -947,7 +1008,6 @@ footer {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0), 0px 4px 4px rgba(0, 0, 0, 0),
   1px 4px 6px rgba(0, 0, 0, 0);
 
-  transition-property: box-shadow;
   transition: box-shadow var(--duration) var(--timing-function);
 }
 
@@ -1002,7 +1062,6 @@ footer {
   background-color: rgba(33, 150, 243, 0.9);
   transform: translateY(100%);
 
-  transition-property: transform;
   transition: transform var(--duration) var(--timing-function);
 }
 
