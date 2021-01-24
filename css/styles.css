@@ -253,7 +253,8 @@ section {
   border: 1px solid var(--activ-button-color);
 }
 
-.modal-lable > .feedback-input {
+.feedback-lable {
+  display: block;
   margin-bottom: 20px;
 }
 
