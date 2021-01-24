@@ -295,6 +295,7 @@ section {
   border-color var(--duration) var(--timing-function);
 }
 
+/*сделал эффект для фокуса, по макету такого нет*/
 .checkbox-input:focus + .modal-checkbox::after {
   border: 2px solid var(--activ-button-color);
   border-radius: 2px;
