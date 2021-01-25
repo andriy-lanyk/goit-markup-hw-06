@@ -809,7 +809,7 @@ footer {
 }
 
 .join {
-  margin-left: 70px;
+  margin-left: 63px;
 
   width: 206px;
   height: 80px;
@@ -900,6 +900,8 @@ footer {
   outline: transparent;
 
   background-color: inherit;
+
+  color: black;
 }
   
 .subscription-input::placeholder {
